@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ungkapkan Perasaan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            background-color: #e91e63;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.5s, transform 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .circle:hover {
+            background-color: #ff4081;
+            transform: scale(1.1);
+        }
+
+        .hidden-message {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .show-message {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .info {
+            color: #fff;
+            font-size: 14px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Tambahkan gaya untuk pesan Bersyanda */
+        #lastMessage {
+            background-color: #e91e63;
+            color: #fff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="circle" onclick="showMessage('firstMessage')">
+            <div class="hidden-message" id="firstMessage">saya mau bilang sesuatu hehe</div>
+        </div>
+        <div class="circle" onclick="showMessage('loveMessage')">
+            <div class="hidden-message" id="loveMessage">I have crush on you</div>
+        </div>
+        <div class="circle" onclick="showMessage('lastMessage')">
+            <div class="hidden-message" id="lastMessage">Bersyanda wkwkk sory gabut</div>
+        </div>
+    </div>
+    <p class="info">Klik di lingkaran untuk melihat pesan selanjutnya.</p>
+
+    <script>
+        var messages = ['firstMessage', 'loveMessage', 'lastMessage'];
+        var currentIndex = 0;
+
+        function showMessage(messageId) {
+            if (currentIndex < messages.length) {
+                document.getElementById(messageId).classList.remove("hidden-message");
+                document.getElementById(messageId).classList.add("show-message");
+                currentIndex++;
+            }
+        }
+    </script>
+</body>
+</html>
